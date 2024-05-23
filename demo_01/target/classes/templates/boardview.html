@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> <!-- 위에 xmlns 하면 타임리프 문법을 쓸수 있다.-->
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세페이지</title>
+</head>
+<body>
+
+<h1 th:text="${board.title}">제목 입니다.</h1>
+<p th:text ="${board.content}">내용이 들어갈 내용입니다.</p>
+
+<!-- 타임리프로 th:href = "@{}"을 하여 파라미터 값을 넘김
+수정의 경우 pathvariable 이용
+삭제 : /board/delete?id=1
+수정 : /board/modify/1 -->
+<a th:href="@{/board/delete?(id=${board.id})}">글 삭제</a>
+<a th:href="@{/board/modify/{id}(id=${board.id})}">글 수정</a>
+</body>
+</html>
